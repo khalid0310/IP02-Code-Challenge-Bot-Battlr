@@ -2,37 +2,63 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-size: 2em;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bot {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.bot.selected {
+  background-color: lightblue;
+}
+
+button {
+  background-color: #0074d9;
   color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bot.enlisted {
+  background-color: #b2ff59; /* Change to your desired color */
+}
+
+.bot {
+  width: 100%;
+  max-width: 200px; /* Adjust this value as needed */
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.bot img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.bot-collection {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Create 6 equal columns */
+  gap: 30px; /* Adjust the gap as needed */
+  max-width: 100%; /* Make sure the grid occupies the entire available width */
+  padding: 10 16px; /* Add some padding to the sides of the grid */
+  margin: 10px; /* Remove any margin */
+}
+.header-rectangle {
+  background-color: #333; /* Set the background color */
+  padding: 16px; /* Add padding for spacing */
+  color: white; /* Set the text color */
+  border-radius: 4px; /* Add rounded corners */
+  margin-top: auto;
+  max-height: 00px;
 }

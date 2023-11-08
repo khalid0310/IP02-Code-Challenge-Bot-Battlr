@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import BotCollection from './components/BotCollection';
+import EnlistedBots from './components/EnlistedBots';
 
 function App() {
+  const [enlisted, setEnlisted] = useState([]);
+  const [botsData, setBotsData] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8001/bots')
+      .then((response) => response.json())
+      .then((data) => setBotsData(data))
+      .catch((error) => console.error('Error fetching bot data:', error));
+  }, []);
+
+  const handleEnlist = (botId) => {
+    if (!enlisted.includes(botId)) {
+      setEnlisted([...enlisted, botId]);
+    } else {
+      setEnlisted(enlisted.filter((id) => id !== botId));
+    }
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Bot Battler</h1>
+      <BotCollection bots={botsData} onEnlist={handleEnlist} enlisted={enlisted} />
+      <EnlistedBots enlisted={enlisted} />
     </div>
   );
 }
